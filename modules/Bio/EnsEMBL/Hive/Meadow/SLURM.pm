@@ -385,7 +385,7 @@ sub parse_report_source_line {
                  'exception_status'  => $exception_status,
                  'mem_megs'          => $mem_used, # mem_in_units, returnd by sacct with --units=M  
                  'swap_megs'         => $max_disk_read, # swap_in_units
-                 'pending_sec'       => $reserved_time, 
+                 'pending_sec'       => $reserved_time // 0,
                  'cpu_sec'           => $total_cpu ,
                  'lifespan_sec'      => $elapsed , 
             };
