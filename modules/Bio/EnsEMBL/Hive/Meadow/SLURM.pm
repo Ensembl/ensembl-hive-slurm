@@ -368,6 +368,7 @@ sub parse_report_source_line {
         $job_id =~ s/\.batch//;   
 
         $mem_used =~ s/M$//; # results are reported in Megabytes
+        $max_disk_read =~ s/M$//; # results are reported in Megabytes
 
         # get previously parsed status ( slurm returns 3 rows of statuses which are different ! ) 
         my $cause_of_death = get_cause_of_death($job_id_to_state{$job_id}) ;  
