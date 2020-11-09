@@ -86,7 +86,7 @@ sub name {  # also called to check for availability; assume Slurm is available i
     my @lines = @{ execute_command($cmd) };
     my @val = split /\|/, $lines[0]; 
     my $cluster_name = $val[0]; 
-    print "Cluster name: $cluster_name\n"; 
+    #print "Cluster name: $cluster_name\n";
     return $cluster_name; 
 }
 
@@ -521,7 +521,7 @@ sub submit_workers_return_meadow_pids {
 sub execute_command {
   my ($cmd) = @_;
 
-  print "Executing : $cmd\n";
+  #print "Executing : $cmd\n";
   my $return_value;
 
   my ($stdout, $stderr, @result) = Capture::Tiny::capture (sub {
