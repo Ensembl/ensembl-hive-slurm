@@ -370,6 +370,11 @@ sub parse_report_source_line {
         $mem_used =~ s/M$//; # results are reported in Megabytes
         $max_disk_read =~ s/M$//; # results are reported in Megabytes
 
+        if ($reserved_time =~ /:/) {
+            my $reserved_timepiece = Time::Piece->strptime($reserved_time, '%H:%M:%S');
+            $reserved_time = $reserved_timepiece->hour*3600 + $reserved_timepiece->minute*60 + $reserved_timepiece->second;
+        }
+
         # get previously parsed status ( slurm returns 3 rows of statuses which are different ! ) 
         my $cause_of_death = get_cause_of_death($job_id_to_state{$job_id}) ;  
         $exception_status  = $cause_of_death ; 
